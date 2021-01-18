@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConnectionService } from '@agilis/common';
+import { HttpClientModule } from '@angular/common/http';
+//import { LocalConnectionService } from './services/agilis/connection.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +14,15 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
+    
   ],
-  providers: [],
+  providers: [
+  //  LocalConnectionService,
+    //ConnectionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

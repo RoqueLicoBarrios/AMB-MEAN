@@ -1,0 +1,124 @@
+<axe-loading [show]="loading"></axe-loading>
+
+<axe-form id="formMain" title="Paises" type="main" (onShowSearch)="searchShow(formSearch)" > 
+  <ng-container form-header-buttons-end>
+    <button mat-icon-button (click)="dataShow(formData)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+     <ng-container form-body>
+        <axe-table [rows]="tablerows" [data]="data">
+            
+            <ng-template #resultsFrame let-item >
+                    <td class="col-4" >{{ item.Nombre }}</td>
+                    <td class="col-3" >{{ item.A2 }}</td>
+                    <td class="col-3" >{{ item.A3 }}</td>
+                    <td class="col-1"><button mat-icon-button (click)="dataShow(formUpdate)" ><mat-icon>create</mat-icon></button></td>
+                    <td class="col-1"><button mat-icon-button (click)="delete(item)"><mat-icon>clear</mat-icon></button></td>
+            </ng-template>
+                    
+        </axe-table>
+        
+    </ng-container> 
+    
+</axe-form>
+<ng-template #formSearch let-modal>
+    <axe-form title="Buscar" type="search" (onClose)="searchClose()"> 
+          <ng-container form-body>
+            <div class="container-fluid">
+              <div class="row align-items-center">
+                <div class="col-12">
+                  <axe-input title="Nombre" hintText="Máx 50 caracteres" maxlength="50"  ></axe-input>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container form-footer-buttons>
+            <button mat-stroked-button (click)="get()">
+              <mat-icon>search</mat-icon>
+              <span>Buscar</span>
+            </button>
+          </ng-container>
+     </axe-form>
+     
+ </ng-template>
+      
+    
+<ng-template #formData let-modal>
+  <axe-form title="Pais" type="data" (onClose)="dataClose()"> 
+    <ng-container form-body>
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <axe-input [(bind)]="itemSelected.Nombre" title="Nombre" hintText="Máx 50 caracteres" maxlength="50" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A2" title="A2" hintText="Máx 2 caracteres" maxlength="2" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A3" title="A3" hintText="Máx 3 caracteres" maxlength="3" required="true"></axe-input>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container form-footer-buttons>
+      <button mat-stroked-button (click)="set()">
+        <mat-icon>search</mat-icon>
+        <span>Confirmar</span>
+      </button>
+    </ng-container>
+  </axe-form>
+</ng-template>
+
+<ng-template #formUpdate let-modal>
+  <axe-form title="Pais" type="data" (onClose)="dataClose()"> 
+    <ng-container form-body>
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <axe-input [(bind)]="itemSelected.Nombre" title="Nombre" hintText="Máx 50 caracteres" maxlength="50" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A2" title="A2" hintText="Máx 2 caracteres" maxlength="2" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A3" title="A3" hintText="Máx 3 caracteres" maxlength="3" required="true"></axe-input>
+          </div>
+          
+        </div>
+      </div>
+    </ng-container>
+    <ng-container form-footer-buttons>
+      <button mat-stroked-button (click)="update()">
+        <mat-icon>create</mat-icon>
+        <span>Confirmar</span>
+      </button>
+    </ng-container>
+  </axe-form>
+</ng-template>
+
+<ng-template #formDelete let-modal>
+  <axe-form title="Pais" type="data" (onClose)="dataClose()"> 
+    <ng-container form-body>
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <axe-input [(bind)]="itemSelected.Nombre"  title="Nombre" hintText="Máx 50 caracteres" maxlength="50" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A2" title="A2" hintText="Máx 2 caracteres" maxlength="2" required="true"></axe-input>
+          </div>
+          <div class="col-6">
+            <axe-input [(bind)]="itemSelected.A3" title="A3" hintText="Máx 3 caracteres"  maxlength="3" required="true"></axe-input>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container form-footer-buttons>
+      <button mat-stroked-button (click)="delete()">
+        <mat-icon>create</mat-icon>
+        <span>Confirmar</span>
+      </button>
+    </ng-container>
+  </axe-form>
+</ng-template>

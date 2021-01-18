@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+//@import '~bootstrap/scss/bootstrap';
+@import './themes/tables.scss';
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// Patch para containers en modals
+.cdk-overlay-container {
+	z-index: 1051 !important;
+}
+
+// para q ocupen el 100% del espacio (para usar B4)
+mat-form-field {
+	width: 100%;
+}
+
+::ng-deep .dropdown-menu {
+	width: 100%;
+}
+
+ngb-typeahead-window {
+	width: 100%;
+}
+
+// borde de los botones
+button:focus {
+	outline: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

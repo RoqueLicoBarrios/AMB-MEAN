@@ -1,0 +1,41 @@
+th.asc:before,
+th.desc:before {
+	content: "";
+	display: block;
+	background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>')no-repeat;
+	background-size: 22px;
+	width: 22px;
+	height: 22px;
+	float: left;
+	margin-left: -8px;
+}
+*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+th.asc:before {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+}
+
+.tableheaders {
+	margin-bottom: 0;
+}
+.tablebody {
+	height: 85%;
+	overflow-y: auto;
+}
+.tablerow {
+	margin-right: 0px;
+	margin-left: 0px;
+	th,
+	td {
+		border: none;
+	}
+}
+button.mat-icon-button.mat-button-small {
+	height: 30px;
+	line-height: 30px;
+}
