@@ -25,7 +25,7 @@ export class ACPaisService {
 
 
     return this.http
-      .post<GEO.Pais[]>(urlCommon + 'Pais', new Agilis.WebClientParams('GetByCustom', p.toString()))
+      .post<GEO.Pais[]>(urlCommon + 'Pais', new Agilis.WebClientParams('GetByCustom',p.toString()))
       .pipe( 
         map((xs) => xs.map((x) => Object.assign(new GEO.Pais(), x))),
         

@@ -4,9 +4,11 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 //import { Console } from 'console';
 //import { ConsoleReporter } from 'jasmine';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { GEO } from 'src/app/models/geo';
 import { ACPaisService } from 'src/app/services/ac-pais.service';
+
 
 @Component({
   selector: 'app-paises',
@@ -27,7 +29,7 @@ export class PaisesComponent implements OnInit {
     new tableRow(1,"BORRAR","BORRAR ",true)
   ];
    data: GEO.Pais[] = [];
-
+  nameSearch: GEO.Pais;
   
   searchNombre: string = '';
   itemSelected: GEO.Pais;
@@ -65,8 +67,10 @@ export class PaisesComponent implements OnInit {
   get() {
     this.searchClose();
     this.loading = true;
+    console.log(this.itemSelected)
     this.paisService
-      .get(new GEO.Pais)
+   
+      .get( this.itemSelected)
       .pipe(
         finalize(() => this.loading = false)
       )
