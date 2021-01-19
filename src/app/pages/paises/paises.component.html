@@ -28,13 +28,13 @@
             <div class="container-fluid">
               <div class="row align-items-center">
                 <div class="col-12">
-                  <axe-input title="Nombre" hintText="Máx 50 caracteres" maxlength="50" [(bind)]="itemSelected.nombre" ></axe-input>
+                  <axe-input title="Nombre" hintText="Máx 50 caracteres" maxlength="50" [(bind)]="paisName"  ></axe-input>
                 </div>
               </div>
             </div>
           </ng-container>
           <ng-container form-footer-buttons>
-            <button mat-stroked-button (click)="get()">
+            <button mat-stroked-button (click)="get(modal)">
               <mat-icon>search</mat-icon>
               <span>Buscar</span>
             </button>

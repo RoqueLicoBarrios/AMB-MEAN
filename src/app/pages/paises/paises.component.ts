@@ -30,6 +30,7 @@ export class PaisesComponent implements OnInit {
   ];
    data: GEO.Pais[] = [];
   nameSearch: GEO.Pais;
+  paisName :string ='';
   
   searchNombre: string = '';
   itemSelected: GEO.Pais;
@@ -41,6 +42,7 @@ export class PaisesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   searchShow(formSearchRef: TemplateRef<any>) {
     try {
@@ -67,17 +69,21 @@ export class PaisesComponent implements OnInit {
   get() {
     this.searchClose();
     this.loading = true;
-    console.log(this.itemSelected)
     this.paisService
    
-      .get( this.itemSelected)
+      .get(new GEO.Pais)
       .pipe(
         finalize(() => this.loading = false)
       )
       .subscribe(
-        data => this.data = data
-      );
-  }
+       
+       data => this.data = data.filter(dato => { 
+         if (!this.paisName) {return dato } 
+
+       else (this.paisName) 
+      return dato.Nombre === this.paisName})
+        
+     )}
 
   set() {
     this.dataClose();
@@ -95,9 +101,11 @@ export class PaisesComponent implements OnInit {
     
     this.dataClose();
     this.loading = true;
+    console.log(this.itemSelected)
     this.paisService.set(this.itemSelected,Agilis.Operacion.UPDATE)
     .pipe(
-      finalize(() => this.loading = false)
+      
+      finalize(() => this.loading = false )
     )
     .subscribe(
       
